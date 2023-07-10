@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
+import { addTask } from '../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class TodoInput extends Component {
+class TodoInput extends Component {
   render() {
     return (
-      <div>TodoInput</div>
+      <div>
+        <input type='text' placeholder='Add a task' ref='task'/>
+        <button onClick={() => this.props.addTask(this.refs.task.value)}>Add</button>
+      </div>
     )
   }
 }
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({addTask}, dispatch);
+}
+
+export default connect(()=> {}, mapDispatchToProps)(TodoInput);
