@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
           <tr>
             {
               this.props.tasks.map((task, index) => 
-                <Todo key={index} task={task} />
+                <Todo key={index} task={task} id={index}/>
               )
             }
           </tr>
